@@ -21,8 +21,10 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bILesDataDataSet1.pogoda2' . Możesz go przenieść lub usunąć.
+            this.pogoda2TableAdapter.Fill(this.bILesDataDataSet1.pogoda2);
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bILesDataDataSet.As2016proc' . Możesz go przenieść lub usunąć.
-            this.as2016procTableAdapter.Fill(this.bILesDataDataSet.As2016proc);
+            //this.as2016procTableAdapter.Fill(this.bILesDataDataSet.As2016proc);
 
         }
 
@@ -52,13 +54,15 @@ namespace WindowsFormsApp1
     
     }
     */
-        private void button1_Click(object sender, EventArgs e)
+
+      
+            private void button1_Click(object sender, EventArgs e)
 
         {
 
             SqlConnection con = new SqlConnection("Server = localhost; Database = BILesData; Trusted_Connection = True; ");
 
-            SqlCommand cmd = new SqlCommand("Select [stacja],[predkosc_wiatru] from pogoda2", con);
+            SqlCommand cmd = new SqlCommand("Select [stacja],[predkosc_wiatru] from pogoda4", con);
 
             DbDataReader mydatareader;
 
@@ -87,7 +91,11 @@ namespace WindowsFormsApp1
 
         }
 
-       
-       
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+            for (int i = 1; i < 10; i++)
+                this.chart1.Series["Stacja"].Points.AddXY("max", i);
+        }
     }
 }
